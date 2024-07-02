@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "Pressable"
-    ]
+    ],
+    "files.exclude": {
+        "%ProgramData%": true
+    }
 }
