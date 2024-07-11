@@ -1,13 +1,23 @@
 import { Redirect } from 'expo-router';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useSession } from '@/contexts/auth';
-import { Text } from 'react-native';
+import { Text, View, Image, Pressable } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
 import { Loading } from '../../components/Loading';
+import { Menu, MenuItem, MenuItemLabel } from '@/components/ui/menu';
+
+export const unstable_settings = {
+  initialRouteName: 'dashboard'
+}
 
 export default function AppLayout() {
-  const { currentUser, isLoading } = useSession();
+  const { currentUser, isLoading, signOut } = useSession();
   const colorScheme = useColorScheme();
+
+  const CustomHeader = () => {
+    return <View><Text>My Custom Header</Text></View>
+  }
+
 
   if(isLoading) {
     return <Loading />
@@ -18,15 +28,51 @@ export default function AppLayout() {
   }
 
   return (
-    <Drawer>
+    <Drawer
+      screenOptions={{
+        headerRight: () => (
+          <Menu
+            className="text-sky-500" 
+            offset={5}
+            trigger={({...triggerProps}) => {
+              return (
+                <Pressable {...triggerProps} >
+                  <Image 
+                    source={{uri: currentUser.imageURL.square.url}}
+                    style={{height: 40, width: 40, marginRight: 10}}
+                    className="rounded"
+                    />
+                </Pressable>
+              )
+            }}
+            onOpen={() => {
+              console.log('opening');
+              return true;
+            }}
+            
+          >
+            <MenuItem key="Profile" textValue="Profile">
+              <MenuItemLabel className='hover:font-bold' size="xl">Profile</MenuItemLabel>
+            </MenuItem>
+            <MenuItem key="Photos" textValue="Photos">
+              <MenuItemLabel className='hover:font-bold' size="xl">Photos</MenuItemLabel>
+            </MenuItem>
+            <MenuItem onPress={signOut}>
+              <MenuItemLabel size="xl">Sign Out</MenuItemLabel>
+            </MenuItem>
+
+          </Menu>
+        )
+      }}
+
+    >
       <Drawer.Screen
         name="index"
         options={{
           drawerLabel: "Home",
           drawerIcon: ({focused, color, size}) => {
             return <Text>💖</Text>
-          },
-          title: 'Welcome!'
+          }
         }}
       />
       <Drawer.Screen 
@@ -41,6 +87,13 @@ export default function AppLayout() {
         options={{
           drawerLabel: 'Sign Out',
           title: 'Sign Out'
+        }}
+      />
+      <Drawer.Screen
+        name="dashboard"
+        options={{
+          drawerLabel: 'Dashboard',
+          title: 'Dashboard'
         }}
       />
       <Drawer.Screen 
