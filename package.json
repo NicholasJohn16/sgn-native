@@ -18,8 +18,13 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@expo/html-elements": "^0.10.1",
     "@expo/vector-icons": "^14.0.0",
     "@gluestack-ui/button": "latest",
+    "@gluestack-ui/divider": "^0.1.8",
+    "@gluestack-ui/form-control": "^0.1.17",
+    "@gluestack-ui/input": "^0.1.30",
+    "@gluestack-ui/menu": "^0.2.33",
     "@gluestack-ui/nativewind-utils": "latest",
     "@gluestack-ui/overlay": "latest",
     "@gluestack-ui/toast": "latest",
