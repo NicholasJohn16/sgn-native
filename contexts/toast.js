@@ -43,7 +43,6 @@ export function ToastProvider({children}) {
             closeToast: (id) => {
                 toast.close(id);
             },
-            duration: null
         };
 
         options = {...defaultOptions, ...options};
