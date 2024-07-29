@@ -1,6 +1,11 @@
 {
     "cSpell.words": [
-        "Pressable"
+        "gluestack",
+        "hstack",
+        "Ionicons",
+        "nativewind",
+        "Pressable",
+        "vstack"
     ],
     "files.exclude": {
         "%ProgramData%": true
