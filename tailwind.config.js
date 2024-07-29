@@ -4,6 +4,7 @@ module.exports = {
   content: [
     './app/**/*.{html,js,jsx,ts,tsx}',
     './components/**/*.{html,js,jsx,ts,tsx,mdx}',
+    './features/**/*.{html,js,jsx,ts,tsx,mdx}'
     // './src/core-components/**/**/*.{html,js,jsx,ts,tsx}',
   ],
   presets: [require('nativewind/preset')],
@@ -178,10 +179,12 @@ module.exports = {
         roboto: ['Roboto', 'sans-serif'],
       },
       fontWeight: {
+        inherit: 'inherit',
         extrablack: '950',
       },
       fontSize: {
         '2xs': '10px',
+        inherit: 'inherit'
       },
       boxShadow: {
         'hard-1': '-2px 2px 8px 0px rgba(38, 38, 38, 0.20)',
