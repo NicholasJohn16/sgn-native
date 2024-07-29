@@ -1,7 +1,9 @@
+import { Platform } from 'react-native';
 import * as Error from './errors';
 
 export async function request(route, params = {}, method = 'GET') {
-    const apiURL = process.env.EXPO_PUBLIC_API_URL;
+    const isWeb = Platform.OS === 'web';
+    const apiURL = isWeb ? process.env.EXPO_PUBLIC_API_URL : process.env.EXPO_PUBLIC_NATIVE_API_URL;
 
     let options = {
         method,
@@ -17,6 +19,7 @@ export async function request(route, params = {}, method = 'GET') {
         console.log('api.people.fetch');
         return fetch(apiURL + route, options);
     } catch (error) {
+        console.log(error);
         throw new Error(error);
     }
 }
