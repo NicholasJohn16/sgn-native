@@ -13,21 +13,26 @@ import { SessionProvider } from "../contexts/auth";
 import { ToastProvider } from '../contexts/toast';
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
+import Constants from "expo-constants";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import "../assets/global.css";
 import { Slot } from "expo-router";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { EventProvider } from 'react-native-outside-press';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 // https://stackoverflow.com/questions/77966470/expo-react-native-nati-base-project-tailwindnative-build-failed
 // import "../node_modules/.cache/nativewind/global.css";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+export function AppLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     if (loaded) {
@@ -41,15 +46,28 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider>
-      <ToastProvider>
-        <SessionProvider>
-          <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-            <GestureHandlerRootView style={{ flex: 1 }}>
-              <Slot/>
-            </GestureHandlerRootView>
-          </ThemeProvider>
-        </SessionProvider>
-      </ToastProvider>
+      <QueryClientProvider client={queryClient}>
+        <ToastProvider>
+          <SessionProvider>
+            <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <EventProvider>
+                  <ReactQueryDevtools />
+                  <Slot/>
+                </EventProvider>
+              </GestureHandlerRootView>
+            </ThemeProvider>
+          </SessionProvider>
+        </ToastProvider>
+      </QueryClientProvider>
     </GluestackUIProvider>
   );
 }
+
+let RootLayout = AppLayout;
+console.log(Constants, 'extra');
+if(Constants.expoConfig.extra.storybookEnabled === 'true') {
+  RootLayout = require('../.storybook').default;
+}
+
+export default RootLayout;

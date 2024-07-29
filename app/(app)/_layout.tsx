@@ -1,7 +1,7 @@
 import { Redirect } from 'expo-router';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useSession } from '@/contexts/auth';
-import { Text, View, Image, Pressable } from 'react-native';
+import { Text, View, Image, Pressable, useWindowDimensions } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
 import { Loading } from '../../components/Loading';
 import { Menu, MenuItem, MenuItemLabel } from '@/components/ui/menu';
@@ -12,12 +12,8 @@ export const unstable_settings = {
 
 export default function AppLayout() {
   const { currentUser, isLoading, signOut } = useSession();
+  const dimensions = useWindowDimensions();
   const colorScheme = useColorScheme();
-
-  const CustomHeader = () => {
-    return <View><Text>My Custom Header</Text></View>
-  }
-
 
   if(isLoading) {
     return <Loading />
@@ -30,6 +26,7 @@ export default function AppLayout() {
   return (
     <Drawer
       screenOptions={{
+        drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
         headerRight: () => (
           <Menu
             className="text-sky-500" 
@@ -101,6 +98,13 @@ export default function AppLayout() {
         options={{
           drawerLabel: `${currentUser.username}'s profile`,
           title: currentUser.username
+        }}
+      />
+      <Drawer.Screen
+        name="notes"
+        options={{
+          drawerLabel: 'Notes',
+          title: 'Notes'
         }}
       />
     </Drawer>
