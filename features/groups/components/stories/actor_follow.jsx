@@ -1,0 +1,1 @@
+export * from '../../../people/components/stories/actor_follow';
