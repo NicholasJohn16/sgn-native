@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Text, Pressable } from "react-native";
 
 export function Truncate({children, readMore = false, length = 300, ending = '...'}) {
+    if(!children)  { return }
+
     const [showMore, setShowMore] = useState(false);
     const tooLong = children.length > length;
 
@@ -9,14 +11,13 @@ export function Truncate({children, readMore = false, length = 300, ending = '..
         setShowMore(prev => !prev);
     }
 
-    
     if(!tooLong) {
         return (
-            <Text>{children}</Text>
+            <>{children}</>
         )
     }
     
-    const readMoreText = showMore ? "Show Less" : "Show More";
+    const readMoreText = showMore ? <Text>Show Less</Text> : <Text>Show More</Text>;
     const truncated = children.substr(0, length).trim();
 
     return (

@@ -1,48 +1,48 @@
 import { Text, Image, View } from "react-native";
 import { Card } from "@/components/ui/card";
 import { VStack } from "@/components/ui/vstack";
-import { HStack } from "@/components/ui/hstack";
 import { Heading } from "@/components/ui/heading";
-import { Truncate } from "../../helpers/truncate";
-import { Avatar } from "../actor/Avatar";
+import { Truncate } from "@/components/helpers/truncate";
+import { Avatar } from "@/components/ui/actor/Avatar";
+import { Header } from "@/components/ui/story/Header";
+import { Box } from '@/components/ui/box';
+import { List as Comments } from "@/components/core/commentable/List";
 
-const stories = require.context('../../stories', true);
-
-console.log("** BEFORE STORIES **");
-console.log(stories, 'stories');
-console.log(stories.keys(), 'keys');
-console.log("** AFTER STORIES **");
-
-
-export default function Story({story, index}) {
-    const { Title, Body } = stories(`./${story.component}/${story.name}.jsx`);
-    // console.log({ Title, Body }, 'module');
-    const createdOn = new Date(story.creationTime);
+export function Story({story, children}) {
     const subject = Object.hasOwn(story, 'subjects') ? story.subjects[0] : story.subject;
     const hasComments = Object.hasOwn(story, 'comments');
 
     return (
-        <Card className="p-0 mb-2">
-            {subject &&
-                <HStack className="p-2 border-b">
-                    <Avatar actor={subject} />
-                    <VStack className="justify-around">
-                        <Heading>
-                            <Title story={story} />
-                        </Heading>
-                        <Text>{createdOn.toLocaleDateString()}</Text>
-                    </VStack>
-                </HStack>
+        <Card className="p-0 mb-4 border">
+            <Header 
+                author={subject}
+                title={<Title title={children.title} />}
+                creationTime={story.creationTime}
+                owner={story.author != story.owner ? story.owner : null}
+            />
+
+            {children.body && 
+                <Box className="p-4 border-t">
+                    {children.body}
+                </Box>
             }
-            
-            <View className="px-2 pb-2">
-                <Body story={story}/>
-            </View>
 
-            {hasComments && story.comments.map(comment => (<Comment comment={comment} />))}
-
-
+            {hasComments && <Comments comments={story.comments} />}
         </Card>
+    )
+}
+
+function Title({title}) {
+
+    //leading-[18]
+    return (
+        <Heading
+            textBreakStrategy='balanced'
+            className="leading-[14] web:leading-4"
+            numberOfLines={2}
+        >
+            {title}
+        </Heading>
     )
 }
 
