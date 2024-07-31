@@ -1,5 +1,14 @@
 import { Button as GButton, ButtonText } from '@/components/ui/button';
-import { TextInput, Pressable, Text } from 'react-native';
+import { TextInput, Text } from 'react-native';
+import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useSession } from "@/contexts/auth";
+import { Pressable } from '@/components/ui/pressable';
+import { Box } from '@/components/ui/box';
+import { FormControl, FormControlLabel, FormControlLabelText  } from "@/components/ui/form-control"
+import { Textarea, TextareaInput } from '@/components/ui/textarea';
+import { Input, InputField } from "@/components/ui/input"
+import { PrioritySelector } from '@/features/todos/components/PrioritySelector';
 
 export function Button({showForm}) {
     return (
@@ -17,21 +26,46 @@ export function Button({showForm}) {
 
 export function Form({showPlaceholder, setShowPlaceholder, inputRef}) {
 
+
     if(showPlaceholder) {
         return (
-            <Pressable className="border rounded p-4" onPress={() => setShowPlaceholder(false)}>
-                <Text className="text-muted">Share a task</Text>
+            <Pressable onPress={() => setShowPlaceholder(false)}>
+                <Box className="border rounded p-4">
+                    <Text className="text-muted">Share a task</Text>
+                </Box>
             </Pressable>
         )
     }
 
     return (
-        <TextInput
-            ref={inputRef}
-            className="rounded border p-2"
-            multiline={true}
-            numberOfLines={4}
+        <Box>
+            <FormControl className="mb-4">
+                <FormControlLabel>
+                    <FormControlLabelText>Title</FormControlLabelText>
+                </FormControlLabel>
+                <Input>
+                    <InputField ref={inputRef} />
+                </Input>
+            </FormControl>
 
-        />
+            <FormControl className="mb-4">
+                <FormControlLabel>
+                    <FormControlLabelText>Description</FormControlLabelText>
+                </FormControlLabel>
+                <Textarea>
+                    <TextareaInput />
+                </Textarea>
+            </FormControl>
+
+            <FormControl className="mb-4">
+                <FormControlLabel>
+                    <FormControlLabelText>Priority</FormControlLabelText>
+                </FormControlLabel>
+    
+                <PrioritySelector />
+                
+            </FormControl>
+
+        </Box>
     )
 }
