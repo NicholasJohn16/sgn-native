@@ -1,8 +1,8 @@
 import { Text } from "react-native";
 import { Heading } from "@/components/ui/heading";
 import { Truncate } from "@/components/helpers/truncate";
-import { Name } from "@/components/ui/actor/Name";
-import { MediumLink } from '@/components/ui/medium/link';
+import { Name } from "@/components/core/actor/Name";
+import { MediumLink } from '@/components/core/medium/link';
 
 export function Title({story}) {
     return <><Name actor={story.subject}/> published a new <MediumLink media={story.object}>Article</MediumLink></>

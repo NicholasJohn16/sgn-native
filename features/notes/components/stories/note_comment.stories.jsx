@@ -1,5 +1,5 @@
 import {Title, Body} from './note_comment';
-import { Story } from '@/components/ui/story';
+import { Story } from '@/components/core/story';
 
 const template = (args) => (
     <Story story={args.story}>

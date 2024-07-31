@@ -1,8 +1,9 @@
-import { Header } from "@/components/ui/story/Header";
+import { Header } from "@/components/core/story/Header";
 import { Card } from '@/components/ui/card';
-import { Name } from '@/components/ui/actor/Name';
+import { Name } from '@/components/core/actor/Name';
 import { View, Text } from 'react-native';
 import { Box } from '@/components/ui/box';
+import { Toolbar } from "@/components/core/Toolbar/Toolbar";
 
 
 export function Item({ note, className }) {

@@ -9,8 +9,6 @@ import {
   
 
 export function Avatar({actor, linked = true, size = 'square', className}) {
-    console.log(actor);
-
     if(!actor) {
         return <></>
     }

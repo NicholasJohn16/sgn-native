@@ -1,11 +1,12 @@
 import { Box } from '@/components/ui/box';
 import { VStack } from '@/components/ui/vstack';
 import { HStack } from '@/components/ui/hstack';
-import { Avatar } from '@/components/ui/actor/Avatar';
-import { Name } from '@/components/ui/actor/Name';
+import { Avatar } from '@/components/core/actor/Avatar';
+import { Name } from '@/components/core/actor/Name';
 import { Card } from '@/components/ui/card';
 import { Humanize } from '@/components/helpers/date/humanize';
 import { Text } from '@/components/ui/text';
+import { Toolbar } from '@/components/core/Toolbar/Toolbar';
 
 export function Large({comment}) {
     return (
@@ -19,6 +20,8 @@ export function Large({comment}) {
             </HStack>
 
             <Box className="p-4 border-t"><Text>{comment.body}</Text></Box>
+
+            <Toolbar node={comment} size="small" />
         </Box>
     )
 }

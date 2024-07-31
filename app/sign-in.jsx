@@ -13,11 +13,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Heading } from '@/components/ui/heading';
 import { FormControl, FormControlLabel, FormControlLabelText } from '@/components/ui/form-control';
 import { Link } from "expo-router";
-import { Menu, MenuItem, MenuItemLabel } from '@/components/ui/menu';
 
 export default function signIn() {
     const {signIn, isLoading} = useSession();
-    const [data, setData] = useState({username: "NicholasJohn16", password: '1G3z!$bbXrGq*N4T'});
+    const [data, setData] = useState({username: "", password: ""});
     const [showPassword, setShowPassword] = useState(false);
     const sendToast = useToast();
 

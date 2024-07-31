@@ -1,9 +1,9 @@
 import { Text } from 'react-native';
-import { Avatar } from '@/components/ui/actor/Avatar';
+import { Avatar } from '@/components/core/actor/Avatar';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
 import { Humanize } from '@/components/helpers/date/humanize';
-import { Name } from '@/components/ui/actor/Name';
+import { Name } from '@/components/core/actor/Name';
 
 export function Header({author, title, creationTime, owner, className}) {
     return (

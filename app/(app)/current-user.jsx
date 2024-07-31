@@ -14,8 +14,8 @@ import { Truncate } from "../../components/helpers/truncate";
 import { useDimensions } from "../../hooks/useDimension";
 
 import { getNotes } from '@/api/notes';
-import { List as Note } from '@/features/notes/components/list';
-import { InfiniteScroll } from '@/components/InfintieScroll';
+import { List as Note } from '@/features/notes/components/List';
+import { InfiniteScroll } from '@/components/core/InfintieScroll';
 import { Skeletons } from '@/features/notes/components/Skeleton';
 
 export default function currentUser() {

@@ -1,4 +1,4 @@
-import { MediumLink } from "@/components/ui/medium/link";
+import { MediumLink } from "@/components/core/medium/link";
 import { Text, View } from 'react-native';
 
 export function Task({task}) {

@@ -3,10 +3,12 @@ import { Card } from "@/components/ui/card";
 import { VStack } from "@/components/ui/vstack";
 import { Heading } from "@/components/ui/heading";
 import { Truncate } from "@/components/helpers/truncate";
-import { Avatar } from "@/components/ui/actor/Avatar";
-import { Header } from "@/components/ui/story/Header";
+import { Avatar } from "@/components/core/actor/Avatar";
+import { Header } from "@/components/core/story/Header";
 import { Box } from '@/components/ui/box';
 import { List as Comments } from "@/components/core/commentable/List";
+import { Divider } from '@/components/ui/divider';
+import { Toolbar } from "@/components/core/Toolbar/Toolbar";
 
 export function Story({story, children}) {
     const subject = Object.hasOwn(story, 'subjects') ? story.subjects[0] : story.subject;
@@ -22,9 +24,14 @@ export function Story({story, children}) {
             />
 
             {children.body && 
+            <>
                 <Box className="p-4 border-t">
                     {children.body}
+        
+                    <Divider className="my-4" />
+                    <Toolbar size="small" node={story} />
                 </Box>
+            </>
             }
 
             {hasComments && <Comments comments={story.comments} />}

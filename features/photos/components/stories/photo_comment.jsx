@@ -1,5 +1,5 @@
 import { namesHelper } from '@/components/helpers/story';
-import { MediumLink } from "@/components/ui/medium/link";
+import { MediumLink } from "@/components/core/medium/link";
 import { Photo } from './photo';
 
 export function Title({story}) {

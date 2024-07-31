@@ -1,4 +1,4 @@
-import { Avatar } from '@/components/ui/actor/Avatar';
+import { Avatar } from '@/components/core/actor/Avatar';
 import { HStack } from '@/components/ui/hstack';
 import { useSession } from "@/contexts/auth";
 import { Button, ButtonText } from '@/components/ui/button';

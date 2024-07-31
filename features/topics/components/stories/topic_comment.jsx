@@ -1,5 +1,5 @@
 import { namesHelper } from '@/components/helpers/story';
-import { MediumLink } from "@/components/ui/medium/link";
+import { MediumLink } from "@/components/core/medium/link";
 import { Heading } from '@/components/ui/heading';
 import { Truncate } from '@/components/helpers/truncate';
 import { Text } from "react-native";

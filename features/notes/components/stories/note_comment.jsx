@@ -1,6 +1,6 @@
 import { Truncate } from "@/components/helpers/truncate";
 import { namesHelper } from '@/components/helpers/story';
-import { MediumLink } from '@/components/ui/medium/link';
+import { MediumLink } from '@/components/core/medium/link';
 import { Text } from "react-native";
 
 export function Title({story}) {

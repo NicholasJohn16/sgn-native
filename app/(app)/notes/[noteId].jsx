@@ -3,7 +3,7 @@ import { Text, Pressable, View, ScrollView } from "react-native";
 import { getNote } from "@/api/notes";
 import { useQuery } from "@tanstack/react-query";
 import { Card } from '@/components/ui/card';
-import { Avatar } from '@/components/ui/actor/Avatar';
+import { Avatar } from '@/components/core/actor/Avatar';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
 import { Loading } from '@/components/Loading';
@@ -65,10 +65,6 @@ export default function Page() {
             <Toolbar node={note} />
 
             <Note note={note} className="my-4" />
-
-            {/* {reversedComments.map(comment => (
-                <View className="my-4 p-4"><Text>{comment.body}</Text></View>
-            ))} */}
 
             <Comments comments={reversedComments} size="large" />
 

@@ -1,5 +1,5 @@
-import { Name } from "@/components/ui/actor/Name";
-import { MediumLink } from "@/components/ui/medium/link";
+import { Name } from "@/components/core/actor/Name";
+import { MediumLink } from "@/components/core/medium/link";
 import { Photo, Photos } from './photo';
 
 export function Title({story}) {

@@ -1,4 +1,4 @@
-import { MediumLink } from "@/components/ui/medium/link";
+import { MediumLink } from "@/components/core/medium/link";
 import { Image } from "react-native";
 import { HStack } from '@/components/ui/hstack';
 
