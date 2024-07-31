@@ -25,25 +25,16 @@ export async function request(route, params = {}, method = 'GET') {
 }
 
 export async function getJSON(response) {
-    console.log('api.people.getJSON');
-
     try {
-        console.log(1);
         const text = await response.text();
-        console.log(2);
         const json = JSON.parse(text);
-        console.log(3);
        
         throwIfError(json);
         
-        console.log(4);
         return json;
     } catch (error) {
-        console.log(5);
-        console.log(error);
         throw new Error(error);
     }
-
 }
 
 function throwIfError(json) {
