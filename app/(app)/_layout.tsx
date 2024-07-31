@@ -107,6 +107,13 @@ export default function AppLayout() {
           title: 'Notes'
         }}
       />
+      <Drawer.Screen
+        name="people/[alias]"
+        options={{
+          drawerLabel: 'Person',
+          title: 'Person'
+        }}
+      />
     </Drawer>
   );
 }
