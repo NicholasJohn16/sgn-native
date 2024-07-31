@@ -48,8 +48,9 @@ Execute the below commands to install the application.
 
 3. `npm install --legacy-peer-deps`
 
-4. If on Windows, `node .\scripts\nativewind-fix.js` This should print
-`'NativeWind fix applied successfully!'` to the console when completed.
+4. If on Windows, `node .\scripts\nativewind-fix.js`
+
+    * This should print `'NativeWind fix applied successfully!'` to the console when completed.
 
 5. `npx expo start -c`
 
