@@ -66,7 +66,7 @@ export function Form({setShowPlaceholder, showPlaceholder, inputRef}) {
             />
             <GButton 
                 size="md"
-                className="w-1/12 ml-auto mt-4"
+                className="w-auto ml-auto mt-4"
                 onPress={onCreateNote}
             >
                 <ButtonText>Share</ButtonText>
