@@ -5,6 +5,7 @@ import { Text, View, Image, Pressable, useWindowDimensions } from 'react-native'
 import { Drawer } from 'expo-router/drawer';
 import { Loading } from '../../components/Loading';
 import { Menu, MenuItem, MenuItemLabel } from '@/components/ui/menu';
+import { Avatar } from '@/components/core/actor/Avatar';
 
 export const unstable_settings = {
   initialRouteName: 'dashboard'
@@ -34,11 +35,7 @@ export default function AppLayout() {
             trigger={({...triggerProps}) => {
               return (
                 <Pressable {...triggerProps} >
-                  <Image 
-                    source={{uri: currentUser.imageURL.square.url}}
-                    style={{height: 40, width: 40, marginRight: 10}}
-                    className="rounded"
-                    />
+                  <Avatar actor={currentUser} linked={false} className="mr-4" />
                 </Pressable>
               )
             }}

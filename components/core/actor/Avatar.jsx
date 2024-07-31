@@ -8,26 +8,41 @@ import {
 } from '@/components/ui/avatar';
   
 
-export function Avatar({actor, linked = true, size = 'square', className}) {
+export function Avatar({actor, linked = true, size = 'square', className = ""}) {
     if(!actor) {
         return <></>
     }
 
-    const hasSize = Object.hasOwn(actor.imageURL, size);
+    if(linked) {
+        return (
+            <Link href={`/people/${actor.alias}`} className="rounded" asChild>
+                <BaseAvatar actor={actor} size={size} className={className}/>
+            </Link>
+        )
+    }
     
+    if(!linked) {
+        return (
+            <BaseAvatar actor={actor} size={size} className={className} />
+        )
+    }
+    
+}
+
+function BaseAvatar({actor, size, className}) {
+    const hasSize = Object.hasOwn(actor.imageURL, size);
+
     return (
-        <Link href={`/people/${actor.alias}`} className="rounded" asChild>
-            <GAvatar className={`${className}`}>
-                <AvatarFallbackText className="rounded">{actor.name}</AvatarFallbackText>
-                {hasSize && 
-                    <AvatarImage 
-                        className={`rounded`}
-                        source={{uri: actor.imageURL[size].url}}
-                    // style={{...actor.imageURL[size].size}}
-                    // className={`rounded ${className}`}
-                    />
-                }
-            </GAvatar>
-        </Link>
+        <GAvatar className={`rounded ${className}`}>
+            <AvatarFallbackText className="rounded">{actor.name}</AvatarFallbackText>
+            {hasSize && 
+                <AvatarImage 
+                    className={`rounded`}
+                    source={{uri: actor.imageURL[size].url}}
+                // style={{...actor.imageURL[size].size}}
+                // className={`rounded ${className}`}
+                />
+            }
+        </GAvatar>
     )
 }
