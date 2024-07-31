@@ -21,3 +21,7 @@ export async function getSession() {
     console.log('api.people.getSession');
     return await getJSON(await request('/people/session'));
 }
+
+export async function getPerson(alias) {
+    return await getJSON(await request(`/people/${alias}`));
+}
