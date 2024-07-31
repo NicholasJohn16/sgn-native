@@ -7,29 +7,18 @@ import { Card } from '@/components/ui/card';
 import { Text } from '@/components/ui/text';
 import { Humanize } from '@/components/helpers/date/humanize';
 import { Button, ButtonText } from '@/components/ui/button';
+import { Toolbar } from '../Toolbar/Toolbar';
 
 export function Small({comment}) {
     return (
-        <HStack>
-
-            <Avatar className="w-8 h-8 my-3 ml-2" actor={comment.author} />
+        <HStack className="ml-12 mr-4">
+            <Avatar className="w-8 h-8 mt-1 mx-2" actor={comment.author} />
             <VStack className="flex-grow min-h-10">
                 <Box className="p-2 border rounded">
                     <Text>{comment.body}</Text>
                 </Box>
-                <HStack space="sm">
-                    <Text size="xs" className="leading-8 font-semibold text-black">
-                        <Humanize>{comment.creationTime}</Humanize>
-                    </Text>
-                    <Button size="xs" variant="link" action="secondary">
-                        <ButtonText>Like</ButtonText>
-                    </Button>
-                    <Button size="xs" variant="link" action="secondary">
-                        <ButtonText>Delete</ButtonText>
-                    </Button>
-                </HStack>
+                <Toolbar size="small" node={comment} showTime={true} />
             </VStack>
-
         </HStack>
     )
 }

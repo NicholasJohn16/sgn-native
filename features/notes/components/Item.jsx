@@ -20,6 +20,8 @@ export function Item({ note, className }) {
                 <Text>{note.body}</Text>
             </Box>
 
+            <Toolbar size="small" node={note} className="px-4" />
+
         </Card>
     )
 }

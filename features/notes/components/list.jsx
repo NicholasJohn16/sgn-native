@@ -20,9 +20,11 @@ export function List({note, className}) {
                 owner={note.author != note.owner ? note.owner : null}
             />
 
-            <View className="border-t p-4">
+            <Box className="border-t p-4">
                 <Text><Truncate readMore={true}>{note.body}</Truncate></Text>
-            </View>
+                <Divider className="my-4" />
+                <Toolbar size="small" node={note} />
+            </Box>
 
         </Card>
     )
