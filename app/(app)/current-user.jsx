@@ -15,7 +15,7 @@ import { useDimensions } from "../../hooks/useDimension";
 
 import { getNotes } from '@/api/notes';
 import { List as Note } from '@/features/notes/components/List';
-import { InfiniteScroll } from '@/components/core/InfintieScroll';
+import { InfiniteScroll } from '@/components/core/InfiniteScroll';
 import { Skeletons } from '@/features/notes/components/Skeleton';
 
 export default function currentUser() {
