@@ -1,7 +1,7 @@
 import { View, Text, FlatList, TouchableHighlight } from "react-native"
 import { getLeaderStories } from "@/api/stories";
 import { StoryLoader } from "@/components/core/story/loader";
-import { InfiniteScroll } from "@/components/core/InfintieScroll";
+import { InfiniteScroll } from "@/components/core/InfiniteScroll";
 import { Skeletons, SkeletonBase } from "@/components/core/story/Skeleton";
 import { Composer } from '@/components/core/Composer';
 
