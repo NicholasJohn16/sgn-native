@@ -15,7 +15,7 @@ import { useDimensions } from "@/hooks/useDimension";
 import { Loading } from '@/components/Loading';
 import { getNotes } from '@/api/notes';
 import { List as Note } from '@/features/notes/components/List';
-import { InfiniteScroll } from '@/components/core/InfintieScroll';
+import { InfiniteScroll } from '@/components/core/InfiniteScroll';
 import { Skeletons } from '@/features/notes/components/Skeleton';
 import { useLocalSearchParams } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
