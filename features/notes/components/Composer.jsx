@@ -1,5 +1,5 @@
 import { Button as GButton, ButtonText } from '@/components/ui/button';
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createNote } from '@/api/notes';
@@ -7,15 +7,17 @@ import { useSession } from "@/contexts/auth";
 import { Textarea, TextareaInput } from '@/components/ui/textarea';
 import { Pressable } from '@/components/ui/pressable';
 import { Box } from '@/components/ui/box';
+import { Text } from '@/components/ui/text';
+import { HStack } from '@/components/ui/hstack';
+import { Badge, BadgeText } from '@/components/ui/badge';
 
 export function Button({showForm}) {
     return (
-        <GButton
+        <GButton 
             variant="outline"
             size="xs"
-            className="p-4 border"
-            onPress={showForm}
             action="secondary"
+            onPress={showForm}
         >
             <ButtonText>Note</ButtonText>
         </GButton>
@@ -39,6 +41,8 @@ export function Form({setShowPlaceholder, showPlaceholder, inputRef}) {
     });
 
     const onCreateNote = () => {
+        if(isWhitespace) { return; }
+
         mutation.mutate({ownerId: currentUser.id, data: { body }});
         setBody('');
         setShowPlaceholder(true);
@@ -65,13 +69,20 @@ export function Form({setShowPlaceholder, showPlaceholder, inputRef}) {
                 onChange={e => setBody(e.target.value)}
                 value={body}
             />
-            <GButton 
-                size="md"
-                className="w-auto ml-auto mt-4"
-                onPress={onCreateNote}
-            >
-                <ButtonText>Share</ButtonText>
-            </GButton>
+            <HStack className="justify-between mt-4">
+                {body.length > 0 && <Badge variant="outline" className="rounded">
+                        <BadgeText>{body.length}</BadgeText>
+                    </Badge>
+                }
+                <GButton 
+                    size="md"
+                    className="w-auto ml-auto"
+                    onPress={onCreateNote}
+                    isDisabled={isWhitespace}
+                    >
+                    <ButtonText>Share</ButtonText>
+                </GButton>
+            </HStack>
         </View>
 
     )
