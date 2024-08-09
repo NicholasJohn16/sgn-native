@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getPerson } from "@/api/people";
 import { Center } from "@/components/ui/center";
 import { Skeleton } from '@/components/ui/skeleton';
+import { Avatar } from '@/components/core/actor/Avatar';
 
 export default function currentUser() {
     const { alias } = useLocalSearchParams();
@@ -60,11 +61,12 @@ export default function currentUser() {
             className="pt-0"
         >
             <HStack>
-                <Image 
+                <Avatar actor={currentUser} className="-mt-20 z-10" />
+                {/* <Image 
                     source={{uri: currentUser.imageURL.medium.url}}
                     style={{...currentUser.imageURL.medium.size}}
                     className="rounded -mt-20 z-10"
-                />
+                /> */}
                 
                 <HStack className="p-4 w-full justify-between items-center">
                     <View>
