@@ -52,12 +52,3 @@ function Title({title}) {
         </Heading>
     )
 }
-
-function Comment({comment}) {
-    return (
-        <VStack>
-            <Avatar actor={comment.author }/>
-            <Text><Truncate readMore={true}>{comment.body}</Truncate></Text>
-        </VStack>
-    )
-}
