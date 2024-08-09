@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.test {
-    font-weight: bold;
+.infinite-scroll {
+    margin: auto;
+}
+
+@media ( min-width: 768px ) {
+    .infinite-scroll {
+        /* max-width: 80%; */
+    }
+}
+
+@media ( min-width: 1024px) {
+    .infinite-scroll {
+        max-width: 65%;
+    }
+}
+
+@media ( min-width: 1280px) {
+    .infinite-scroll {
+        max-width: 50%;
+    }
 }
