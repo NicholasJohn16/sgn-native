@@ -1,21 +1,19 @@
 import { Button as GButton, ButtonText } from '@/components/ui/button';
-import { TextInput, Text } from 'react-native';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useSession } from "@/contexts/auth";
 import { Pressable } from '@/components/ui/pressable';
 import { Box } from '@/components/ui/box';
 import { FormControl, FormControlLabel, FormControlLabelText  } from "@/components/ui/form-control"
 import { Textarea, TextareaInput } from '@/components/ui/textarea';
 import { Input, InputField } from "@/components/ui/input"
 import { PrioritySelector } from '@/features/todos/components/PrioritySelector';
+import { Text } from '@/components/ui/text';
 
 export function Button({showForm}) {
     return (
         <GButton
             variant="outline"
             size="xs"
-            className="p-4"
             onPress={showForm}
             action="secondary"
         >
@@ -25,7 +23,6 @@ export function Button({showForm}) {
 }
 
 export function Form({showPlaceholder, setShowPlaceholder, inputRef}) {
-
 
     if(showPlaceholder) {
         return (
