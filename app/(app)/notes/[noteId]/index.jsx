@@ -56,7 +56,7 @@ export default function NoteId() {
                     <VStack className="w-full justify-center">
                         <Text>{note.author.name}'s Notes</Text>
                         <HStack className="justify-between">
-                            <Link href={`/notes/@${note.author.id}`}>Notes</Link>
+                            <Link href={`/notes/@/${note.author.id}`}>Notes</Link>
                             <Link
                                 className="text-right"
                                 href={`/people/${note.author.alias}`}
