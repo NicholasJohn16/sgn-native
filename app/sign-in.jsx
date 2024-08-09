@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Text, StyleSheet, View, TextInput, Pressable } from "react-native";
 import Constants from 'expo-constants';
-import { useSession } from '../contexts/auth';
-import { Input, InputSlot, InputField } from '../components/ui/input';
+import { useSession } from '@/contexts/auth';
+import { Input, InputSlot, InputField } from '@/components/ui/input';
 import { Button, ButtonText} from '@/components/ui/button'
 import { router } from "expo-router";
-import { useToast } from "../contexts/toast";
+import { useToast } from "@/contexts/toast";
 import { VStack } from '@/components/ui/vstack';
 import { HStack } from '@/components/ui/hstack';
 import { Loading } from "../components/Loading";
