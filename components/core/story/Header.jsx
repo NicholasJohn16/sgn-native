@@ -6,14 +6,17 @@ import { Humanize } from '@/components/helpers/date/humanize';
 import { Name } from '@/components/core/actor/Name';
 
 export function Header({author, title, creationTime, owner, className}) {
+
+    const showOwner = !author || (owner && owner.id != author.id);
+
     return (
-        <HStack className={`p-4 ${className}`}>
-            <Avatar actor={author} className="mr-4" />
+        <HStack space="md" className={`p-4 ${className}`}>
+            <Avatar actor={author} />
             <VStack className="justify-center">
                 {title}
                 <HStack space="md">
                     <Text><Humanize>{creationTime}</Humanize></Text>
-                    {owner && owner.id != author.id && <Text><Name actor={owner} /></Text>}
+                    {showOwner && <Text><Name actor={owner} /></Text>}
                 </HStack>
             </VStack>
         </HStack>
