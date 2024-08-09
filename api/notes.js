@@ -35,8 +35,6 @@ export async function editNote(id, data) {
 }
 
 export async function createNote(ownerId, data) {
-    console.log(ownerId, 'ownerId');
-    console.log(data, 'data');
     const formData = new FormData();
 
     formData.append('body', data.body);
@@ -49,7 +47,6 @@ export async function createNote(ownerId, data) {
 }
 
 export async function getNote(id) {
-    console.log(id, 'getNote.id');
     return await getJSON(await request(`/notes/${id}`));
 }
 
