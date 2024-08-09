@@ -21,7 +21,7 @@ export function Large({comment}) {
 
             <Box className="p-4 border-t"><Text>{comment.body}</Text></Box>
 
-            <Toolbar node={comment} size="small" />
+            <Toolbar node={comment} size="small" className="mx-4" />
         </Box>
     )
 }

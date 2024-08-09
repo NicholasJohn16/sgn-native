@@ -11,7 +11,7 @@ import { Toolbar } from '../Toolbar/Toolbar';
 
 export function Small({comment}) {
     return (
-        <HStack className="ml-12 mr-4">
+        <HStack space="md" className="ml-12 mr-4">
             <Avatar className="w-8 h-8 mt-1 mx-2" actor={comment.author} />
             <VStack className="flex-grow min-h-10">
                 <Box className="p-2 border rounded">

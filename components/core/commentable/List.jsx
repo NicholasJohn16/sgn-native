@@ -8,6 +8,7 @@ const variants = {
 };
 
 export function List({comments, size = 'small'}) {
+    if(!comments || !comments.length) return <></>;
 
     const Comment = size === 'small' ? Small : Large;
 
