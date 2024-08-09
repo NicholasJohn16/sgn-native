@@ -1,21 +1,13 @@
-import { useState, useEffect } from "react";
-import { Text, Image, View, Pressable, Dimensions } from "react-native";
-import { useSession } from "@/contexts/auth";
+import { Text, Image, View } from "react-native";
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { VStack } from '@/components/ui/vstack';
 import { HStack } from '@/components/ui/hstack';
 import { Heading } from '@/components/ui/heading';
 import { Button, ButtonText } from '@/components/ui/button';
-import { Divider } from '@/components/ui/divider';
-import { Menu, MenuItem, MenuItemLabel } from '@/components/ui/menu';
-import { Entypo } from '@expo/vector-icons';
-import { SocialStats } from '@/components/ui/social-stats';
+import { SocialStats } from '@/components/core/actor/SocialStats';
 import { Truncate } from "@/components/helpers/truncate";
 import { useDimensions } from "@/hooks/useDimension";
 import { getNotes } from '@/api/notes';
-import { List as Note } from '@/features/notes/components/List';
-import { InfiniteScroll } from '@/components/core/InfiniteScroll';
-import { Skeletons } from '@/features/notes/components/Skeleton';
 import { useLocalSearchParams } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { getPerson } from "@/api/people";
@@ -47,6 +39,8 @@ export default function currentUser() {
     const BannerImage = () => {
         const size = width > 768 ? 'large' : 'medium';
         // const height = dimensions.window.width > 768 ? 200 : 180;
+        if(!Object.hasOwn(currentUser.coverURL, size)) { return; }
+
         return <Image 
             source={{uri: currentUser.coverURL[size].url}} 
             style={{height: 180, width: '100%', position: 'absolute'}}
