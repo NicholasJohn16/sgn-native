@@ -20,6 +20,7 @@ import { useLocalSearchParams } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { getPerson } from "@/api/people";
 import { Center } from "@/components/ui/center";
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function currentUser() {
     const { alias } = useLocalSearchParams();
@@ -92,6 +93,23 @@ export default function currentUser() {
             renderItem={({item}) => <Note className="mb-4" note={item} key={item.id} asChild />}
             skeleton={Skeletons}
         /> */}
+        </>
+    )
+}
+
+function Loading() {
+    return (
+        <>
+            <Skeleton variant="sharp" className="h-[180px]" />
+            <HStack>
+                <Skeleton className="h-[160px] w-[160px] m-4 -mt-20 z-10 border border-white border-2"/>
+
+                <VStack space="md" className="w-full mt-4">
+                    <Skeleton className="h-6 w-2/6" />
+                    <Skeleton className="h-4 w-2/6" />
+                </VStack>
+
+            </HStack>
         </>
     )
 }
