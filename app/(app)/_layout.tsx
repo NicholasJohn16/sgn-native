@@ -1,4 +1,4 @@
-import { Redirect } from 'expo-router';
+import { Redirect, Link } from 'expo-router';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useSession } from '@/contexts/auth';
 import { Text, View, Image, Pressable, useWindowDimensions } from 'react-native';
@@ -7,9 +7,9 @@ import { Loading } from '../../components/Loading';
 import { Menu, MenuItem, MenuItemLabel } from '@/components/ui/menu';
 import { Avatar } from '@/components/core/actor/Avatar';
 
-export const unstable_settings = {
-  initialRouteName: 'dashboard'
-}
+// export const unstable_settings = {
+//   initialRouteName: 'dashboard'
+// }
 
 export default function AppLayout() {
   const { currentUser, isLoading, signOut } = useSession();
@@ -45,14 +45,25 @@ export default function AppLayout() {
             }}
             
           >
-            <MenuItem key="Profile" textValue="Profile">
-              <MenuItemLabel className='hover:font-bold' size="xl">Profile</MenuItemLabel>
+            <MenuItem className='hover:font-bold' key="Profile" textValue="Profile">
+              <Link href={`/people/${currentUser.alias}`} asChild>
+                <MenuItemLabel className="w-full" size="lg">
+                    Profile
+                </MenuItemLabel>
+              </Link>
             </MenuItem>
-            <MenuItem key="Photos" textValue="Photos">
-              <MenuItemLabel className='hover:font-bold' size="xl">Photos</MenuItemLabel>
+            <MenuItem className='hover:font-bold' key="notes" textValue="Notes">
+              <Link href={`/notes/@/${currentUser.id}`} asChild>
+                <MenuItemLabel className="w-full" size="lg">
+                  Notes
+                </MenuItemLabel>
+              </Link>
             </MenuItem>
+            {/* <MenuItem className='hover:font-bold' key="Photos" textValue="Photos">
+              <MenuItemLabel size="lg">Photos</MenuItemLabel>
+            </MenuItem> */}
             <MenuItem onPress={signOut}>
-              <MenuItemLabel size="xl">Sign Out</MenuItemLabel>
+              <MenuItemLabel size="lg">Sign Out</MenuItemLabel>
             </MenuItem>
 
           </Menu>
@@ -63,38 +74,11 @@ export default function AppLayout() {
       <Drawer.Screen
         name="index"
         options={{
-          drawerLabel: "Home",
-          drawerIcon: ({focused, color, size}) => {
-            return <Text>💖</Text>
-          }
-        }}
-      />
-      <Drawer.Screen 
-        name="explore"
-        options={{
-          drawerLabel: "Explore",
-          title: "Explore"
-        }}
-      />
-      <Drawer.Screen
-        name="sign-out"
-        options={{
-          drawerLabel: 'Sign Out',
-          title: 'Sign Out'
-        }}
-      />
-      <Drawer.Screen
-        name="dashboard"
-        options={{
-          drawerLabel: 'Dashboard',
-          title: 'Dashboard'
-        }}
-      />
-      <Drawer.Screen 
-        name="current-user"
-        options={{
-          drawerLabel: `${currentUser.username}'s profile`,
-          title: currentUser.username
+          drawerLabel: "Dashboard",
+          title: "Dashboard"
+          // drawerIcon: ({focused, color, size}) => {
+          //   return <Text>💖</Text>
+          // }
         }}
       />
       <Drawer.Screen
