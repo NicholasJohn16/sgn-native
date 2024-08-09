@@ -42,7 +42,7 @@ correctly with newer versions.
 
 Execute the below commands to install the application.
 
-1. `git clone git@github.com:NicholasJohn16/sgn-native.git`
+1. `git clone https://github.com/NicholasJohn16/sgn-native.git`
 
 2. `cd sgn-native`
 
