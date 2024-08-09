@@ -17,11 +17,11 @@ export function Name({actor, linked = true, ...props}) {
     return (
         <>
             {linked ? (
-                <Link className="web:font-inherit web:text-inherit" href={`/${parts[1]}/${alias}`} {...props} >
+                <Link className="web:font-inherit web:font-size-inherit text-cyan-600 hover:text-cyan-500" href={`/${parts[1]}/${alias}`} {...props} >
                     {actor.name}
                 </Link>
             ) : (
-                <Text className="web:font-inherit web:text-inherit" {...props}>{actor.name}</Text>
+                <Text className="web:font-inherit web:font-size-inherit" {...props}>{actor.name}</Text>
             )}
         </>
     )

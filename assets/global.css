@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.web\:font-size-inherit {
+    font-size: inherit;
+}
+
 .infinite-scroll {
     margin: auto;
 }

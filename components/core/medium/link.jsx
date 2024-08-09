@@ -6,6 +6,8 @@ export function MediumLink({media, children}) {
     href += media.alias ? `-${media.alias}` : ``;
 
     return (
-        <Link href={href} className="web:font-inherit web:text-inherit">{children}</Link>
+        <Link href={href} className="web:font-inherit web:font-size-inherit text-cyan-600 hover:text-cyan-500">
+            {children}
+        </Link>
     )
 }
