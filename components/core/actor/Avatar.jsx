@@ -9,13 +9,11 @@ import {
   
 
 export function Avatar({actor, linked = true, size = 'square', className = ""}) {
-    if(!actor) {
-        return <></>
-    }
+    if(!actor) { return <></> }
 
     if(linked) {
         return (
-            <Link href={`/people/${actor.alias}`} className="rounded" asChild>
+            <Link href={`/people/${actor.alias}`} className="rounded">
                 <BaseAvatar actor={actor} size={size} className={className}/>
             </Link>
         )
