@@ -4,13 +4,6 @@ import { Spinner } from '@/components/ui/spinner';
 
 export function InfiniteScroll({queryKey, fetchItems, renderItem, skeleton, headerComponent}) {
 
-    // const getItems = async (params) => {
-    //     console.log(params, 'is.params');
-    //     const response = await fetchItems(params);
-    //     console.log(response, 'is.response');
-    //     return response.data;
-    // }
-
     const query = useInfiniteQuery({
         queryKey,
         queryFn: fetchItems,
@@ -20,13 +13,10 @@ export function InfiniteScroll({queryKey, fetchItems, renderItem, skeleton, head
         }
     });
 
-    console.log(query.data, 'query.data');
     const flattenedData = query.data?.pages.flatMap(n => n) || [];
-    // const flattenedData = [];
-    console.log(flattenedData, 'flattenedData');
 
     return (
-        <View style={{flex: 1}} className="pt-4">
+        <View style={{flex: 1}} className="pt-4 infinite-scroll">
             <FlatList
                 data={flattenedData}
                 renderItem={renderItem}
