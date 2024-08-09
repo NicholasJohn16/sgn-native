@@ -26,6 +26,7 @@ export async function deleteNote(id) {
 
 export async function editNote(id, data) {
     const formData = new FormData();
+    formData.append('body', data.body);
 
     const params = {
         body: formData

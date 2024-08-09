@@ -3,7 +3,6 @@ import { Image } from "react-native";
 import { HStack } from '@/components/ui/hstack';
 
 export function Photo({photo, size = 'medium'}) {
-    console.log(photo, 'photo');
     return (
         <MediumLink media={photo}>
             <Image

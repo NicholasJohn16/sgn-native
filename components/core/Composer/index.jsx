@@ -20,13 +20,11 @@ export function Composer({}) {
     const inputRef = useRef(null);
     
     const showForm = (key) => {
-        console.log(key, 'composer.todos');
         setCurrentTab(key);
     }
     
     useEffect(() => {
         inputRef.current?.focus();
-        console.log(inputRef.current);
     }, [showPlaceholder, currentTab])
 
     return (

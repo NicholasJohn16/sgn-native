@@ -65,7 +65,7 @@ export function AppLayout() {
 }
 
 let RootLayout = AppLayout;
-console.log(Constants, 'extra');
+
 if(Constants.expoConfig.extra.storybookEnabled === 'true') {
   RootLayout = require('../.storybook').default;
 }

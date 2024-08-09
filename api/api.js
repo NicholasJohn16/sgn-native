@@ -16,10 +16,8 @@ export async function request(route, params = {}, method = 'GET') {
     options = {...options, ...params}
 
     try {
-        console.log('api.people.fetch');
         return fetch(apiURL + route, options);
     } catch (error) {
-        console.log(error);
         throw new Error(error);
     }
 }

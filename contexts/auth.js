@@ -53,9 +53,7 @@ export function SessionProvider({children}) {
 
     const signOut = () => {
         setLoading(true);
-        console.log('auth.signOut');
         deleteSession().then((result) => { 
-            console.log(result);
             setLoading(false);
             setCurrentUser(null);
         });

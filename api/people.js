@@ -13,12 +13,10 @@ export async function createSession(username, password) {
 }
 
 export async function deleteSession() {
-    console.log('api.people.deleteSession');
     return await request('/people/session', {}, 'DELETE');
 }
 
 export async function getSession() {
-    console.log('api.people.getSession');
     return await getJSON(await request('/people/session'));
 }
 

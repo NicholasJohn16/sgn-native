@@ -27,9 +27,10 @@ export function Form({setShowPlaceholder, showPlaceholder, inputRef}) {
     const { currentUser } = useSession();
     const queryClient = useQueryClient();
 
+    const isWhitespace = !/\S/.test(body);
+
     const mutation = useMutation({
         mutationFn: ({ownerId, data}) => {
-            console.log(data, 'mutationFn');
             return createNote(ownerId, data);
         },
         onSuccess: () => {

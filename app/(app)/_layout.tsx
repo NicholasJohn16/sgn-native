@@ -40,7 +40,7 @@ export default function AppLayout() {
               )
             }}
             onOpen={() => {
-              console.log('opening');
+              // console.log('opening');
               return true;
             }}
             

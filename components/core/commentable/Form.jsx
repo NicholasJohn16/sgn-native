@@ -15,12 +15,10 @@ export function Form({media, addComment}) {
     const mutation = useMutation({
         mutationFn: (body) => addComment(body),
         onSuccess: () => {
-            console.log('success!');
-            const result = queryClient.invalidateQueries(
+            queryClient.invalidateQueries(
                 {queryKey: ['comments', {node: media.id.toString()}]},
                 {queryKey: ['stories']}
             )
-            console.log(result, 'result');
         }
     })
 

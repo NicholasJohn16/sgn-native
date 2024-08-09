@@ -23,9 +23,6 @@ export function useDimensions() {
     const getBreakpoint = () => {
         let breakpoint = 'xs';
         let width = dimensions.window.width;
-        console.log(width, 'getBreakpoint.width');
-
-        console.log(typeof width);
 
         if(width >= 640 && width < 768) {
             breakpoint = 'sm';
@@ -47,7 +44,6 @@ export function useDimensions() {
             breakpoint = '2xl';
         }
         
-        console.log(breakpoint, 'getBreakpoint.breakpoint.end')
         return breakpoint;
     }
 
