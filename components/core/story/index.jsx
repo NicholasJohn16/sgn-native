@@ -46,7 +46,6 @@ function Title({title}) {
         <Heading
             // textBreakStrategy='balanced'
             className="leading-[2] web:leading-4 truncate"
-            numberOfLines={2}
         >
             {title}
         </Heading>
