@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { SessionProvider } from "../contexts/auth";
 import { ToastProvider } from '../contexts/toast';
+import { Platform } from 'react-native';
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Constants from "expo-constants";
@@ -52,7 +53,7 @@ export function AppLayout() {
             <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
               <GestureHandlerRootView style={{ flex: 1 }}>
                 <EventProvider>
-                  <ReactQueryDevtools />
+                  {Platform.OS === 'web' && <ReactQueryDevtools /> }
                   <Slot/>
                 </EventProvider>
               </GestureHandlerRootView>
